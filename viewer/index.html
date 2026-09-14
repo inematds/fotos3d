@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visualizador 360 — fotos3d</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
+<style>
+  :root{--bg:#0d0d0f;--amb:#f2b63d;--fg:#eee}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px system-ui,sans-serif}
+  #pano{position:absolute;inset:0}
+  #bar{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;align-items:center;padding:8px 12px;background:rgba(0,0,0,.55);z-index:5}
+  #bar b{color:var(--amb)}
+  #bar input[type=file]{color:#ccc}
+  #drop{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#aaa;pointer-events:none}
+  .badge{margin-left:auto;font-size:12px;color:#bbb}
+</style>
+</head>
+<body>
+<div id="bar"><b>fotos3d · 360</b>
+  <input type="file" id="file" accept="image/*">
+  <span class="badge" id="info">arraste um PNG 2:1 aqui ou use ?src=URL</span></div>
+<div id="pano"></div>
+<div id="drop">Solte a panorâmica equiretangular (2:1) nesta janela</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<script>
+let viewer=null;
+function abrir(src,label){
+  document.getElementById('drop').style.display='none';
+  if(viewer){viewer.destroy();}
+  viewer=pannellum.viewer('pano',{type:'equirectangular',panorama:src,autoLoad:true,autoRotate:-2,hfov:100,showZoomCtrl:true,compass:false});
+  const im=new Image();im.onload=()=>{document.getElementById('info').textContent=(label||'')+' · '+im.naturalWidth+'×'+im.naturalHeight+' · ratio '+(im.naturalWidth/im.naturalHeight).toFixed(3)};im.src=src;
+}
+document.getElementById('file').onchange=e=>{const f=e.target.files[0];if(f)abrir(URL.createObjectURL(f),f.name)};
+addEventListener('dragover',e=>e.preventDefault());
+addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)abrir(URL.createObjectURL(f),f.name)});
+const q=new URLSearchParams(location.search).get('src');if(q)abrir(q,q.split('/').pop());
+</script>
+</body>
+</html>

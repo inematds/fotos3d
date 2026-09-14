@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fotos3d — fotos → 360°</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
+<style>
+  :root{--bg:#0b0b0d;--panel:#141418;--line:#26262c;--amb:#f2b63d;--amb2:#c98d1a;--fg:#ececec;--mut:#9a9aa3;--ok:#4cc38a;--warn:#e5a53a;--bad:#e5484d}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+  header{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--line)}
+  header h1{font-size:18px;margin:0;letter-spacing:.3px}
+  header h1 b{color:var(--amb)}
+  header small{color:var(--mut)}
+  main{display:grid;grid-template-columns:380px 1fr;gap:18px;padding:18px 22px;max-width:1500px;margin:0 auto}
+  @media(max-width:900px){main{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .tabs{display:flex;gap:6px;margin-bottom:12px}
+  .tabs button{flex:1;background:#1c1c22;border:1px solid var(--line);color:var(--mut);padding:8px;border-radius:8px;cursor:pointer}
+  .tabs button.on{background:var(--amb);color:#111;border-color:var(--amb);font-weight:600}
+  label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.5px}
+  input[type=text],select,textarea{width:100%;background:#0f0f12;border:1px solid var(--line);color:var(--fg);padding:9px 10px;border-radius:8px;font:inherit}
+  textarea{min-height:90px;resize:vertical}
+  .drop{border:1px dashed #3a3a44;border-radius:10px;padding:16px;text-align:center;color:var(--mut);cursor:pointer}
+  .drop.over{border-color:var(--amb);color:var(--amb)}
+  .thumbs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .thumbs img{width:64px;height:48px;object-fit:cover;border-radius:5px;border:1px solid var(--line)}
+  .btn{display:inline-block;background:var(--amb);color:#111;border:0;padding:11px 16px;border-radius:9px;font-weight:700;cursor:pointer;width:100%;margin-top:14px;font-size:15px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .btn.sec{background:#1c1c22;color:var(--fg);border:1px solid var(--line);width:auto;padding:8px 12px;font-weight:500;margin:0}
+  .log{font:12px/1.5 ui-monospace,Menlo,monospace;color:var(--mut);background:#0f0f12;border-radius:8px;padding:10px;max-height:180px;overflow:auto;margin-top:12px;white-space:pre-wrap}
+  .log .now{color:var(--amb)}
+  #pano{width:100%;aspect-ratio:2/1;max-height:70vh;background:#000;border-radius:10px;overflow:hidden}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+  .pill{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mut)}
+  .pill.ok{color:var(--ok);border-color:var(--ok)}.pill.warn{color:var(--warn);border-color:var(--warn)}.pill.bad{color:var(--bad);border-color:var(--bad)}
+  .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+  .gal .it{background:#0f0f12;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer}
+  .gal .it img{width:100%;aspect-ratio:2/1;object-fit:cover;display:block}
+  .gal .it div{padding:8px 10px;font-size:13px}
+  .gal .it small{color:var(--mut)}
+  h2{font-size:14px;margin:0 0 8px;color:var(--mut);text-transform:uppercase;letter-spacing:.6px}
+  .empty{color:var(--mut);text-align:center;padding:40px 10px}
+  .custo{font-size:12px;color:var(--mut);margin-top:4px}
+</style>
+</head>
+<body>
+<header><h1><b>fotos3d</b> · fotos comuns → sala em 360°</h1><small>INEMA · reconstrução por IA (não é scan)</small></header>
+<main>
+  <section class="card">
+    <div class="tabs"><button class="on" data-m="fotos">Por fotos</button><button data-m="assunto">Por assunto</button></div>
+    <label>Nome da sala</label><input type="text" id="nome" placeholder="ex.: sala-apto-302">
+    <div id="mFotos">
+      <label>Fotos do mesmo cômodo (4 a 6)</label>
+      <div class="drop" id="drop">Arraste as fotos aqui ou clique para escolher<input type="file" id="files" multiple accept="image/*" hidden></div>
+      <div class="thumbs" id="thumbs"></div>
+      <label>…ou caminho de uma pasta no computador</label><input type="text" id="pasta" placeholder="/home/você/fotos/sala">
+    </div>
+    <div id="mAssunto" hidden>
+      <label>Descreva o cômodo</label>
+      <textarea id="assunto" placeholder="ex.: sala moderna, sofá cinza em L, janela grande com vista pro jardim, piso de madeira clara, paredes brancas, um quadro abstrato, mesa redonda perto da cozinha"></textarea>
+      <div class="custo">A IA cria 5 fotos coerentes do cômodo e depois monta a 360°.</div>
+    </div>
+    <label>Modelo</label><select id="modelo"></select><div class="custo" id="custo"></div>
+    <label>Resolução</label><select id="size"><option>1K</option><option selected>2K</option><option>4K</option></select>
+    <button class="btn" id="go">Gerar 360°</button>
+    <div class="log" id="log" hidden></div>
+  </section>
+  <section>
+    <div class="card">
+      <h2>Resultado</h2>
+      <div id="pano"><div class="empty" id="empty">A panorâmica aparece aqui. Arraste para girar a sala.</div></div>
+      <div class="row" id="res" hidden>
+        <span class="pill" id="pRes"></span><span class="pill" id="pSeam"></span><span class="pill" id="pModelo"></span>
+        <a class="btn sec" id="dl" download>Baixar PNG</a>
+        <button class="btn sec" id="regen">Regenerar</button>
+        <button class="btn sec" id="apagar">Apagar</button>
+      </div>
+      <div class="thumbs" id="resFotos"></div>
+    </div>
+    <div class="card" style="margin-top:18px"><h2>Galeria</h2><div class="gal" id="gal"></div></div>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+let modo='fotos', arquivos=[], viewer=null, atual=null, ultimoForm=null;
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');modo=b.dataset.m;$('#mFotos').hidden=modo!=='fotos';$('#mAssunto').hidden=modo!=='assunto'});
+const drop=$('#drop'),files=$('#files');
+drop.onclick=()=>files.click();
+drop.ondragover=e=>{e.preventDefault();drop.classList.add('over')};drop.ondragleave=()=>drop.classList.remove('over');
+drop.ondrop=e=>{e.preventDefault();drop.classList.remove('over');addFiles(e.dataTransfer.files)};
+files.onchange=()=>addFiles(files.files);
+function addFiles(fl){arquivos=[...arquivos,...fl].slice(0,12);$('#thumbs').innerHTML='';arquivos.forEach(f=>{const i=new Image();i.src=URL.createObjectURL(f);$('#thumbs').appendChild(i)});drop.textContent=arquivos.length+' foto(s) selecionada(s) — clique para adicionar mais'}
+let MODELOS={};
+fetch('/api/modelos').then(r=>r.json()).then(d=>{d.modelos.forEach(m=>{MODELOS[m.id]=m;const o=document.createElement('option');o.value=m.id;o.textContent=m.nome;if(m.id===d.default)o.selected=true;$('#modelo').appendChild(o)});custo()});
+$('#modelo').onchange=custo;function custo(){const m=MODELOS[$('#modelo').value];if(m)$('#custo').textContent='Custo aprox. por imagem: '+m.custo+' · ratio nativo '+m.ratio}
+$('#go').onclick=()=>{const fd=new FormData();fd.append('nome',$('#nome').value||('sala-'+Date.now().toString(36)));fd.append('modelo',$('#modelo').value);fd.append('size',$('#size').value);
+  if(modo==='assunto'){if(!$('#assunto').value.trim())return alert('Descreva o cômodo');fd.append('assunto',$('#assunto').value)}
+  else{if($('#pasta').value.trim())fd.append('pasta',$('#pasta').value.trim());else if(arquivos.length<2)return alert('Envie pelo menos 2 fotos ou uma pasta');arquivos.forEach(f=>fd.append('fotos',f))}
+  ultimoForm=fd;enviar(fd)};
+$('#regen').onclick=()=>{if(ultimoForm)enviar(ultimoForm)};
+async function enviar(fd){$('#go').disabled=true;$('#log').hidden=false;$('#log').textContent='Enviando…';
+  const r=await fetch('/api/jobs',{method:'POST',body:fd});if(!r.ok){$('#log').textContent='Erro: '+(await r.text());$('#go').disabled=false;return}
+  const {id}=await r.json();const t=setInterval(async()=>{const j=await (await fetch('/api/jobs/'+id)).json();
+    $('#log').innerHTML=j.log.map((l,i)=>i===j.log.length-1&&j.status==='rodando'?'<span class="now">▸ '+l+'</span>':'  '+l).join('\n');
+    if(j.status==='pronto'||j.status==='erro'){clearInterval(t);$('#go').disabled=false;if(j.status==='pronto'){mostrar({nome:j.nome,url:j.panorama_url,modelo:j.resultado.modelo,score:j.resultado.checagem.seam_score,costura:j.resultado.checagem.seam_status,fotos:j.resultado.fotos.map(f=>'/out/'+j.nome+'/fotos/'+f.split('/').pop()),largura:j.resultado.checagem.largura,altura:j.resultado.checagem.altura});galeria()}}},1500)}
+function mostrar(it){atual=it;$('#empty').hidden=true;if(viewer)viewer.destroy();
+  viewer=pannellum.viewer('pano',{type:'equirectangular',panorama:it.url+'?t='+Date.now(),autoLoad:true,autoRotate:-2,hfov:100,showZoomCtrl:true});
+  $('#res').hidden=false;$('#pRes').textContent=(it.largura||4096)+'×'+(it.altura||2048)+' · 2:1';
+  const cls=it.costura==='boa'?'ok':it.costura==='aceitável'?'warn':'bad';$('#pSeam').className='pill '+cls;$('#pSeam').textContent='costura '+it.costura+' ('+it.score+')';
+  $('#pModelo').textContent=it.modelo;$('#dl').href=it.url;$('#dl').download=it.nome+'-360.png';
+  $('#resFotos').innerHTML='';(it.fotos||[]).forEach(u=>{const i=new Image();i.src=u;$('#resFotos').appendChild(i)})}
+$('#apagar').onclick=async()=>{if(!atual||!confirm('Apagar "'+atual.nome+'"?'))return;await fetch('/api/galeria/'+atual.nome,{method:'DELETE'});galeria();$('#res').hidden=true;if(viewer){viewer.destroy();viewer=null}$('#empty').hidden=false};
+async function galeria(){const g=await (await fetch('/api/galeria')).json();$('#gal').innerHTML=g.length?'':'<div class="empty">Nenhuma sala ainda.</div>';
+  g.forEach(it=>{const d=document.createElement('div');d.className='it';d.innerHTML='<img src="'+it.url+'"><div>'+it.nome+'<br><small>'+it.modelo+' · costura '+it.costura+'</small></div>';d.onclick=()=>mostrar(it);$('#gal').appendChild(d)})}
+galeria();
+</script>
+</body>
+</html>
