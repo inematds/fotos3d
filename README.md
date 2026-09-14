@@ -23,8 +23,9 @@ Modelos testados na mesma sala (Robie House, 6 fotos reais):
 | id | provedor | 2:1 nativo | resultado | custo |
 |---|---|---|---|---|
 | `flux-klein` (padrão) | Freepik/Magnific | sim (2048×1024 → upscale) | equiretangular real, muito fiel | 10 créditos |
-| `gpt-image-2` | Freepik/Magnific | sim, até 4K, 16 refs | ver `docs/` | ~45–90 créditos |
-| `or-gemini-pro` / `or-gemini-flash` | OpenRouter | não (16:9 → 2:1) | tende a sair grande-angular, não 360 | US$0,04–0,13 |
+| `gpt-image-2` | Freepik/Magnific | sim, até 4K, 16 refs | **melhor qualidade**: projeção esférica correta, costura boa (8), ~80 s | ~45–90 créditos |
+| `or-gemini-pro` | OpenRouter | não (16:9 → 2:1) | 360 plausível, menos fiel (mudou tapete e janelas), costura ruim | ~US$0,13 |
+| `or-gemini-flash` | OpenRouter | não | tende a sair grande-angular, não 360 | ~US$0,04 |
 
 ## Uso
 

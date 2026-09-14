@@ -230,7 +230,7 @@ viewer/index.html
   <table>
     <tr><th>Modelo</th><th>Provedor</th><th>2:1 nativo</th><th>Resultado no teste</th><th>Custo</th></tr>
     <tr><td><code>flux-klein</code> (padrão)</td><td>Freepik / Magnific</td><td>sim, 2048×1024 + upscale</td><td>equiretangular real, muito fiel</td><td>10 créditos</td></tr>
-    <tr><td><code>gpt-image-2</code></td><td>Freepik / Magnific</td><td>sim, até 4K, 16 refs</td><td>alternativa de alta resolução</td><td>~45 a 90 créditos</td></tr>
+    <tr><td><code>gpt-image-2</code></td><td>Freepik / Magnific</td><td>sim, até 4K, 16 refs</td><td>melhor qualidade: projeção esférica correta, costura boa</td><td>~45 a 90 créditos</td></tr>
     <tr><td><code>or-gemini-pro</code></td><td>OpenRouter</td><td>não (16:9 reamostrado)</td><td>360 plausível, menos fiel aos detalhes</td><td>~US$ 0,13</td></tr>
     <tr><td><code>or-gemini-flash</code></td><td>OpenRouter</td><td>não</td><td>tende a sair grande-angular, não 360</td><td>~US$ 0,04</td></tr>
   </table>
@@ -245,6 +245,7 @@ viewer/index.html
     <figure><img src="assets/ex-robie-fotos.jpg" alt="Seis fotos da sala da Robie House"><figcaption>Entrada: 6 fotos reais da sala da Robie House (Frank Lloyd Wright). Wikimedia Commons, foto de w_lemay, CC BY-SA 2.0.</figcaption></figure>
     <figure><img src="assets/ex-assunto-fotos.jpg" alt="Cinco fotos geradas por assunto"><figcaption>Entrada por assunto: "sala moderna, sofá cinza em L, janela ampla, piso de madeira". Cinco fotos coerentes criadas pela IA.</figcaption></figure>
     <figure><img src="assets/ex-robie-360.jpg" alt="Panorâmica 360 da Robie House"><figcaption>Saída com Flux 2 Klein: lareira, banco vermelho, vitrais e teto reconstruídos como um único espaço, 4096×2048.</figcaption></figure>
+    <figure><img src="assets/ex-robie-gpt-360.jpg" alt="Panorâmica 360 da Robie House com GPT Image 2"><figcaption>Saída com GPT Image 2: projeção esférica correta (teto e chão curvando), costura boa. A opção de qualidade.</figcaption></figure>
     <figure><img src="assets/ex-assunto-360.jpg" alt="Panorâmica 360 da sala por assunto"><figcaption>Saída do modo assunto com Gemini Flash: coerente com as fotos, mas com campo de visão menor. Por isso o padrão é o Flux Klein.</figcaption></figure>
   </div>
 </div></section>

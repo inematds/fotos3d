@@ -25,7 +25,7 @@ Motor: `~/projetos/fotos3d` (Python). Saída: `~/projetos/output/fotos3d/<nome>/
 | id | quando usar | custo |
 |---|---|---|
 | `flux-klein` (padrão) | melhor custo/fidelidade; 2:1 nativo, 2048×1024 → upscale 4096 | 10 créditos Magnific |
-| `gpt-image-2` | mais refs (16), até 4K nativo, mais lento/caro | ~45–90 créditos |
+| `gpt-image-2` | melhor qualidade (projeção esférica correta, costura boa); 16 refs, até 4K; ~80 s | ~45–90 créditos |
 | `or-gemini-pro` | alternativa via OpenRouter (16:9 reamostrado p/ 2:1) | ~US$0,13 |
 
 ## Regras
