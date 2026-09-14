@@ -66,6 +66,7 @@ def rodar(*, nome: str, fotos: list[Path] | None = None, assunto: str | None = N
             shutil.copy(alt, final)
             rel = rel2
 
+    seam_bruto = rel.seam_score
     if rel.seam_score > SEAM_OK:
         progresso("Suavizando costura (crossfade nas bordas)")
         suavizar_costura(Image.open(final)).save(final)
@@ -73,7 +74,7 @@ def rodar(*, nome: str, fotos: list[Path] | None = None, assunto: str | None = N
         progresso(f"Costura após suavização: {rel.seam_status} ({rel.seam_score})")
 
     relatorio = {"nome": nome, "modelo": modelo, "fotos": [str(f) for f in fotos], "panorama": str(final),
-                 "checagem": json.loads(rel.to_json()), "segundos": round(time.time() - t0, 1),
+                 "checagem": {**json.loads(rel.to_json()), "seam_score_bruto": seam_bruto}, "segundos": round(time.time() - t0, 1),
                  "tipo_comodo": analise.get("tipo_comodo")}
     (out / "relatorio.json").write_text(json.dumps(relatorio, indent=2, ensure_ascii=False))
     progresso(f"Pronto: {final}")

@@ -11,8 +11,6 @@ from . import freepik, gemini, openrouter
 MODELOS = {
     "or-gemini-flash": ("openrouter", "Gemini 3.1 Flash Image (OpenRouter)", "~US$0,04", "16:9"),
     "or-gemini-pro":   ("openrouter", "Gemini 3 Pro Image (OpenRouter)", "~US$0,13 (2K) / 0,24 (4K)", "16:9"),
-    "gemini-flash":    ("gemini", "Gemini 3.1 Flash Image (API Google, paga)", "~US$0,04", "16:9"),
-    "gemini-pro":      ("gemini", "Gemini 3 Pro Image (API Google, paga)", "~US$0,13", "16:9"),
     "flux-klein":      ("freepik", "Flux 2 Klein (Magnific, 2:1 nativo, 2048x1024)", "10 créditos", "2:1"),
     "gpt-image-2":     ("freepik", "GPT Image 2 Edit (Magnific, 2:1 nativo, até 4K)", "~45-90 créditos", "2:1"),
 }

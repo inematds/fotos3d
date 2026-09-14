@@ -58,20 +58,20 @@ curl -s -X POST "https://api.freepik.com/v1/ai/text-to-image/flux-2-klein" \
 
 Resposta (200):
 ```json
-{"data":{"task_id":"e30e9302-ad84-487b-9002-8746f01f495d","status":"CREATED","error":null,"generated":[]}}
+{"data":{"task_id":"<task_id>","status":"CREATED","error":null,"generated":[]}}
 ```
 
 ### 3.2 GET polling
 
 ```bash
-curl -s "https://api.freepik.com/v1/ai/text-to-image/flux-2-klein/e30e9302-ad84-487b-9002-8746f01f495d" \
+curl -s "https://api.freepik.com/v1/ai/text-to-image/flux-2-klein/<task_id>" \
   -H "x-freepik-api-key: $MAGNIFIC_API_KEY"
 ```
 
 Resposta (já `COMPLETED` no 1º poll, ~3 s):
 ```json
-{"data":{"task_id":"e30e9302-ad84-487b-9002-8746f01f495d","status":"COMPLETED","error":null,
- "generated":["https://cdn-magnific.freepik.com/result_FLUX_2_KLEIN_e30e9302-..._0.jpeg?token=exp=1789394468~hmac=...&size=stable"]}}
+{"data":{"task_id":"<task_id>","status":"COMPLETED","error":null,
+ "generated":["https://cdn-magnific.freepik.com/result_FLUX_2_KLEIN_e30e9302-..._0.jpeg?token=<expira>"]}}
 ```
 Imagem baixada: **1408×704 JPEG** (bate com a tabela `horizontal_2_1` @1k).
 Segunda chamada igual com `"resolution":"2k"` (task `df6a212c-...`): `COMPLETED` no 1º poll, imagem **2048×1024 JPEG** — confirma que o 2k dobra o 1k dentro do cap de 2048 px.

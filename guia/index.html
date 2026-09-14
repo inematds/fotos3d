@@ -158,7 +158,7 @@
   <div class="grid g3" style="margin-top:26px">
     <div class="card"><div class="num">1</div><h3>Visão</h3><p>O Gemini lê todas as fotos como um único espaço: paredes, portas, janelas, móveis, iluminação, direção estimada de cada foto e o que falta.</p></div>
     <div class="card"><div class="num">2</div><h3>Geração</h3><p>As fotos entram como referência num modelo com 2:1 nativo. O padrão é o Flux 2 Klein via Freepik/Magnific; GPT Image 2 e Gemini via OpenRouter são alternativas.</p></div>
-    <div class="card"><div class="num">3</div><h3>Controle</h3><p>Ratio corrigido, upscale até 4096×2048, score de costura (≤12 boa, ≤30 aceitável, >30 visível), uma regeneração automática e crossfade nas bordas.</p></div>
+    <div class="card"><div class="num">3</div><h3>Controle</h3><p>Ratio corrigido, reamostragem até 4096×2048, score de costura (≤12 boa, ≤30 aceitável, >30 visível), uma regeneração automática e crossfade nas bordas.</p></div>
   </div>
 </div></section>
 
@@ -229,7 +229,7 @@ viewer/index.html
   <div class="tbl">
   <table>
     <tr><th>Modelo</th><th>Provedor</th><th>2:1 nativo</th><th>Resultado no teste</th><th>Custo</th></tr>
-    <tr><td><code>flux-klein</code> (padrão)</td><td>Freepik / Magnific</td><td>sim, 2048×1024 + upscale</td><td>equiretangular real, muito fiel</td><td>10 créditos</td></tr>
+    <tr><td><code>flux-klein</code> (padrão)</td><td>Freepik / Magnific</td><td>sim, 2048×1024 reamostrado</td><td>equiretangular real, muito fiel</td><td>10 créditos</td></tr>
     <tr><td><code>gpt-image-2</code></td><td>Freepik / Magnific</td><td>sim, até 4K, 16 refs</td><td>melhor qualidade: projeção esférica correta, costura boa</td><td>~45 a 90 créditos</td></tr>
     <tr><td><code>or-gemini-pro</code></td><td>OpenRouter</td><td>não (16:9 reamostrado)</td><td>360 plausível, menos fiel aos detalhes</td><td>~US$ 0,13</td></tr>
     <tr><td><code>or-gemini-flash</code></td><td>OpenRouter</td><td>não</td><td>tende a sair grande-angular, não 360</td><td>~US$ 0,04</td></tr>

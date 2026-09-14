@@ -2,7 +2,7 @@ Sala de estar (living room) da Robie House (Frank Lloyd Wright), Chicago — 6 f
 Fonte: Wikimedia Commons, categoria "Robie House living room"
        https://commons.wikimedia.org/wiki/Category:Robie_House_living_room
 Autor: w_lemay (Flickr, https://www.flickr.com/photos/59081381@N03/), fotos de 2024-10-26 ~12:56–13:00, iPhone 15 Pro.
-Arquivos = bytes originais do Commons, sem recompressão, EXIF intacto (modelo, focal 6.76mm/2.22mm, orientação=1, GPS).
+Arquivos reduzidos para ≤2000px (JPEG q88) para caber no repo; originais (5712px, EXIF) estão no Commons.
 Licença: CC BY-SA 2.0 — atribuição "w_lemay / Wikimedia Commons, CC BY-SA 2.0". Ver _meta.json (URL original + página de cada arquivo).
 
 01.jpg  5712x4284  grande-angular do centro da sala: paredes de janelas dos dois lados, mesa/banco no centro, prow (bay de janelas) ao fundo, placa EXIT à direita

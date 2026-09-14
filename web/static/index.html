@@ -105,11 +105,11 @@ async function enviar(fd){$('#go').disabled=true;$('#log').hidden=false;$('#log'
   const r=await fetch('/api/jobs',{method:'POST',body:fd});if(!r.ok){$('#log').textContent='Erro: '+(await r.text());$('#go').disabled=false;return}
   const {id}=await r.json();const t=setInterval(async()=>{const j=await (await fetch('/api/jobs/'+id)).json();
     $('#log').innerHTML=j.log.map((l,i)=>i===j.log.length-1&&j.status==='rodando'?'<span class="now">▸ '+l+'</span>':'  '+l).join('\n');
-    if(j.status==='pronto'||j.status==='erro'){clearInterval(t);$('#go').disabled=false;if(j.status==='pronto'){mostrar({nome:j.nome,url:j.panorama_url,modelo:j.resultado.modelo,score:j.resultado.checagem.seam_score,costura:j.resultado.checagem.seam_status,fotos:j.resultado.fotos.map(f=>'/out/'+j.nome+'/fotos/'+f.split('/').pop()),largura:j.resultado.checagem.largura,altura:j.resultado.checagem.altura});galeria()}}},1500)}
+    if(j.status==='pronto'||j.status==='erro'){clearInterval(t);$('#go').disabled=false;if(j.status==='pronto'){mostrar({nome:j.nome,url:j.panorama_url,modelo:j.resultado.modelo,score:j.resultado.checagem.seam_score,costura:j.resultado.checagem.seam_status,bruto:j.resultado.checagem.seam_score_bruto,fotos:j.resultado.fotos.map(f=>'/out/'+j.nome+'/fotos/'+f.split('/').pop()),largura:j.resultado.checagem.largura,altura:j.resultado.checagem.altura});galeria()}}},1500)}
 function mostrar(it){atual=it;$('#empty').hidden=true;if(viewer)viewer.destroy();
   viewer=pannellum.viewer('pano',{type:'equirectangular',panorama:it.url+'?t='+Date.now(),autoLoad:true,autoRotate:-2,hfov:100,showZoomCtrl:true});
   $('#res').hidden=false;$('#pRes').textContent=(it.largura||4096)+'×'+(it.altura||2048)+' · 2:1';
-  const cls=it.costura==='boa'?'ok':it.costura==='aceitável'?'warn':'bad';$('#pSeam').className='pill '+cls;$('#pSeam').textContent='costura '+it.costura+' ('+it.score+')';
+  const cls=it.costura==='boa'?'ok':it.costura==='aceitável'?'warn':'bad';$('#pSeam').className='pill '+cls;$('#pSeam').textContent='costura '+it.costura+' ('+it.score+(it.bruto!=null&&it.bruto!==it.score?' · bruta '+it.bruto:'')+')';
   $('#pModelo').textContent=it.modelo;$('#dl').href=it.url;$('#dl').download=it.nome+'-360.png';
   $('#resFotos').innerHTML='';(it.fotos||[]).forEach(u=>{const i=new Image();i.src=u;$('#resFotos').appendChild(i)})}
 $('#apagar').onclick=async()=>{if(!atual||!confirm('Apagar "'+atual.nome+'"?'))return;await fetch('/api/galeria/'+atual.nome,{method:'DELETE'});galeria();$('#res').hidden=true;if(viewer){viewer.destroy();viewer=null}$('#empty').hidden=false};

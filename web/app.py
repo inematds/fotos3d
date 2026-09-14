@@ -102,7 +102,7 @@ def galeria():
             pano = Path(r["panorama"])
             if pano.exists():
                 itens.append({"nome": r["nome"], "modelo": r["modelo"], "tipo": r.get("tipo_comodo"), "url": f"/out/{d.name}/{pano.name}",
-                              "costura": r["checagem"]["seam_status"], "score": r["checagem"]["seam_score"],
+                              "costura": r["checagem"]["seam_status"], "score": r["checagem"]["seam_score"], "bruto": r["checagem"].get("seam_score_bruto"),
                               "fotos": [f"/out/{d.name}/fotos/{Path(f).name}" for f in r["fotos"] if (d / "fotos" / Path(f).name).exists()]})
     return itens
 

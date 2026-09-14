@@ -14,7 +14,8 @@ from PIL import Image
 from .env import key
 
 BASE = "https://generativelanguage.googleapis.com/v1beta/models"
-VISION_MODEL = "gemini-3-flash-preview"
+VISION_MODEL = "gemini-3.6-flash"
+VISION_FALLBACKS = ["gemini-3-flash-preview", "gemini-3.5-flash"]
 IMAGE_MODELS = {
     "gemini-flash": "gemini-3.1-flash-image",   # rápido e barato
     "gemini-pro": "gemini-3-pro-image",          # mais fiel, até 4K
@@ -51,10 +52,15 @@ def vision_json(prompt: str, imagens: list[str | Path], model: str = VISION_MODE
         "contents": [{"role": "user", "parts": parts}],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2},
     }
-    try:
-        out = _post(model, body, timeout=180)
-    except RuntimeError:
-        out = _post("gemini-2.5-flash", body, timeout=180)  # fallback se o preview estiver fora (503)
+    out = None
+    for m in [model] + [f for f in VISION_FALLBACKS if f != model]:
+        try:
+            out = _post(m, body, timeout=180)
+            break
+        except RuntimeError as e:  # 503/404: tenta o próximo modelo de visão
+            erro = e
+    if out is None:
+        raise erro
     txt = "".join(p.get("text", "") for p in out["candidates"][0]["content"]["parts"])
     txt = txt.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
     obj, _ = json.JSONDecoder().raw_decode(txt[txt.find("{"):])  # ignora texto extra após o JSON
