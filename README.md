@@ -1,5 +1,7 @@
 # fotos3d — fotos comuns de um cômodo → sala em 360°
 
+**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
 Versão 1.0.0. Pega 4–6 fotos normais de um mesmo ambiente (ou só uma descrição em texto) e gera uma panorâmica **equiretangular 2:1 (4096×2048)** fotorrealista, fiel ao imóvel, que você gira num viewer 360 como num tour virtual. Sem câmera 360, sem scan, sem software 3D.
 
 > É **reconstrução por IA**, não medição: as áreas que nenhuma foto mostra são inferidas de forma conservadora. Serve para marketing imobiliário, preview, conteúdo de tour virtual e insumo para vídeo IA. Não substitui um scan LiDAR.

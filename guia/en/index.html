@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>fotos3d — fotos comuns de um cômodo viram sala em 360°</title>
-<meta content="fotos3d: 4 a 6 fotos normais de um ambiente (ou só uma descrição) viram uma panorâmica 360° equiretangular fotorrealista, fiel ao imóvel, com viewer e interface web. Sem câmera 360, sem scan." name="description"/>
+<title>fotos3d — turn ordinary room photos into a 360° room</title>
+<meta content="fotos3d: 4 to 6 regular photos of a space (or just a description) become a photorealistic, equirectangular 360° panorama that stays true to the property, with a viewer and web interface. No 360 camera, no scan." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -96,7 +96,7 @@
   .tbl{overflow-x:auto}
 </style>
 <link href="https://inematds.github.io/fotos3d/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fotos3d/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fotos3d/guia/es/" hreflang="es" rel="alternate"/></head>
-<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="./" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="en/" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="./" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
 <nav><div class="wrap">
 <a class="brand" href="#top"><span class="emoji">🏠</span> fotos3d</a>
 <span class="sep">|</span>
@@ -106,12 +106,12 @@
 <a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
 </span>
 <div class="links">
-<a class="sec" href="#oque">O que é</a>
-<a class="sec" href="#fluxo">Como funciona</a>
-<a class="sec" href="#guia">Guia de uso</a>
-<a class="sec" href="#exemplos">Exemplos</a>
+<a class="sec" href="#oque">What it is</a>
+<a class="sec" href="#fluxo">How it works</a>
+<a class="sec" href="#guia">User Guide</a>
+<a class="sec" href="#exemplos">Examples</a>
 <a class="sec" href="#roadmap">Roadmap</a>
-<button aria-label="Alternar tema" class="tgl" id="themeToggle" title="Alternar tema">🌙</button>
+<button aria-label="Toggle theme" class="tgl" id="themeToggle" title="Toggle theme">🌙</button>
 <a class="btn" href="https://github.com/inematds/fotos3d" rel="noopener" target="_blank">GitHub</a>
 </div>
 </div></nav>
@@ -119,135 +119,135 @@
 <div class="glow"></div>
 <div class="wrap">
 <div>
-<span class="chip">Imóveis · IA · 360°</span>
-<h1>Fotos comuns de um cômodo viram uma sala em <span class="amb">360°</span></h1>
-<p class="lead">Quatro a seis fotos normais do mesmo ambiente, ou só uma descrição em texto, viram uma panorâmica equiretangular fotorrealista que você gira como num tour virtual. Sem câmera 360, sem scan, sem software 3D.</p>
+<span class="chip">Real Estate · AI · 360°</span>
+<h1>Everyday photos of a room become a room in <span class="amb">360°</span></h1>
+<p class="lead">Four to six regular photos of the same room, or just a text description, become a photorealistic equirectangular panorama you can rotate like a virtual tour. No 360 camera, scan, or 3D software needed.</p>
 <div class="cta">
-<a class="btn" href="#guia">Começar o guia</a>
-<a class="btn ghost" href="https://github.com/inematds/fotos3d" rel="noopener" target="_blank">Ver no GitHub</a>
+<a class="btn" href="#guia">Start the guide</a>
+<a class="btn ghost" href="https://github.com/inematds/fotos3d" rel="noopener" target="_blank">View on GitHub</a>
 </div>
 </div>
-<figure><img alt="Sala reconstruída em 360° a partir de fotos comuns" src="assets/hero.jpg"/></figure>
+<figure><img alt="Room reconstructed in 360° from regular photos" src="../assets/hero.jpg"/></figure>
 </div>
 </header>
 <section id="oque"><div class="wrap">
-<span class="chip">O que é</span>
-<h2>Reconstrução por IA de um ambiente inteiro</h2>
-<p class="sub">A IA entende como as fotos se conectam (o mesmo sofá em duas fotos, a mesma janela de dois ângulos) e reconstrói o cômodo como um espaço único, em formato 2:1 de 4096×2048, pronto para qualquer viewer 360.</p>
+<span class="chip">What it is</span>
+<h2>AI reconstruction of an entire space</h2>
+<p class="sub">The AI understands how the photos connect (the same sofa in two photos, the same window from two angles) and reconstructs the room as a single space in a 2:1 format at 4096×2048, ready for any 360° viewer.</p>
 <div class="grid g3">
-<div class="card"><h3>🏠 Fiel ao imóvel</h3><p>Preserva paredes, portas, janelas, móveis e materiais. Não redesenha, não inventa objetos, cada móvel aparece uma vez só. O que nenhuma foto mostra é inferido de forma conservadora.</p></div>
-<div class="card"><h3>✍️ Ou só um assunto</h3><p>Sem fotos? Descreva o cômodo em texto. A IA cria cinco fotos coerentes do mesmo ambiente e depois monta a 360°. Serve para conceito, preview e conteúdo.</p></div>
-<div class="card"><h3>🔍 Checado antes de entregar</h3><p>Proporção 2:1 exata, resolução mínima 4096×2048, score de costura entre as bordas, regeneração automática se a costura falhar e suavização final. Tudo no relatório.</p></div>
+<div class="card"><h3>🏠 True to the property</h3><p>Preserves walls, doors, windows, furniture, and materials. Doesn't redesign or invent objects; each piece of furniture appears only once. What no photo shows is inferred conservatively.</p></div>
+<div class="card"><h3>✍️ Or just a subject</h3><p>No photos? Describe the room in text. AI creates five consistent photos of the same space and then assembles the 360° panorama. Useful for concepts, previews, and content.</p></div>
+<div class="card"><h3>🔍 Checked before delivery</h3><p>Exact 2:1 ratio, minimum resolution of 4096×2048, score seam edges, automatic regeneration if the seam fails, and final smoothing. Everything is included in the report.</p></div>
 </div>
 </div></section>
 <section id="fluxo"><div class="wrap">
-<span class="chip">Como funciona</span>
-<h2>Do lote de fotos à panorâmica em cinco etapas</h2>
-<p class="sub">É reconstrução por IA, não medição. Serve para marketing imobiliário, preview, tour virtual e insumo para vídeo IA. Não substitui um scan LiDAR.</p>
+<span class="chip">How it works</span>
+<h2>From a batch of photos to a panorama in five steps</h2>
+<p class="sub">It's an AI reconstruction, not a measurement. It's suitable for real estate marketing, previews, virtual tours, and input for AI video. It doesn't replace a LiDAR scan.</p>
 <div class="flow">
-<span>Fotos ou assunto</span><span class="arr">→</span>
-<span>Visão entende o cômodo</span><span class="arr">→</span>
-<span>Prompt conservador</span><span class="arr">→</span>
-<span>Modelo de imagem 2:1 com referências</span><span class="arr">→</span>
-<span>Checagens + costura</span><span class="arr">→</span>
-<span>PNG + viewer 360</span>
+<span>Photos or subject</span><span class="arr">→</span>
+<span>Vision understands the room</span><span class="arr">→</span>
+<span>Conservative prompt</span><span class="arr">→</span>
+<span>2:1 image model with references</span><span class="arr">→</span>
+<span>Checks + stitching</span><span class="arr">→</span>
+<span>PNG + 360 viewer</span>
 </div>
 <div class="grid g3" style="margin-top:26px">
-<div class="card"><div class="num">1</div><h3>Visão</h3><p>O Gemini lê todas as fotos como um único espaço: paredes, portas, janelas, móveis, iluminação, direção estimada de cada foto e o que falta.</p></div>
-<div class="card"><div class="num">2</div><h3>Geração</h3><p>As fotos entram como referência num modelo com 2:1 nativo. O padrão é o Flux 2 Klein via Freepik/Magnific; GPT Image 2 e Gemini via OpenRouter são alternativas.</p></div>
-<div class="card"><div class="num">3</div><h3>Controle</h3><p>Ratio corrigido, reamostragem até 4096×2048, score de costura (≤12 boa, ≤30 aceitável, &gt;30 visível), uma regeneração automática e crossfade nas bordas.</p></div>
+<div class="card"><div class="num">1</div><h3>Vision</h3><p>Gemini reads all the photos as a single space: walls, doors, windows, furniture, lighting, the estimated direction of each photo, and what's missing.</p></div>
+<div class="card"><div class="num">2</div><h3>Generation</h3><p>The photos are used as references for a model with native 2:1 support. The default is Flux 2 Klein via Freepik/Magnific; GPT Image 2 and Gemini via OpenRouter are alternatives.</p></div>
+<div class="card"><div class="num">3</div><h3>Control</h3><p>Corrected ratio, resampling up to 4096×2048, seam score (≤12 good, ≤30 acceptable, &gt;30 visible), one automatic regeneration, and crossfade at the edges.</p></div>
 </div>
 </div></section>
 <section id="pre"><div class="wrap">
-<span class="chip">Pré-requisitos</span>
-<h2>Python 3.12 e duas chaves de API</h2>
-<p class="sub">As chaves são lidas em runtime do seu arquivo de ambiente. Nada é copiado para o projeto.</p>
+<span class="chip">Prerequisites</span>
+<h2>Python 3.12 and two API keys</h2>
+<p class="sub">Keys are read at runtime from your environment file. Nothing is copied into the project.</p>
 <div class="grid g3">
-<div class="card"><h3>Dependências</h3><p>FastAPI, Pillow, NumPy e httpx.</p><pre><span class="c"># na pasta do projeto</span>
+<div class="card"><h3>Dependencies</h3><p>FastAPI, Pillow, NumPy, and httpx.</p><pre><span class="c"># in the project folder</span>
 <span class="k">pip</span> install -r requirements.txt</pre></div>
-<div class="card"><h3>Chaves</h3><p>Freepik/Magnific para gerar, Gemini para a visão. OpenRouter é opcional.</p><pre><span class="c"># ~/projetos/wifi/.env</span>
+<div class="card"><h3>Keys</h3><p>Freepik/Magnific for generation, Gemini for vision. OpenRouter is optional.</p><pre><span class="c"># ~/projetos/wifi/.env</span>
 MAGNIFIC_API_KEY=...
 GEMINI_API_KEY=...
-OPENROUTER_API_KEY=...  <span class="c"># opcional</span></pre></div>
-<div class="card"><h3>Fotos</h3><p>4 a 6 JPG/PNG do mesmo cômodo, de ângulos diferentes. Cobertura boa vale mais do que cinco fotos quase iguais.</p><pre>sala/
-├── 01.jpg  <span class="c"># virada pro sofá</span>
-├── 02.jpg  <span class="c"># virada pra janela</span>
-└── 03.jpg  <span class="c"># virada pra entrada</span></pre></div>
+OPENROUTER_API_KEY=...  <span class="c"># optional</span></pre></div>
+<div class="card"><h3>Photos</h3><p>4 to 6 JPG/PNG photos of the same room from different angles. Good coverage is better than five nearly identical photos.</p><pre>sala/
+├── 01.jpg  <span class="c"># turn toward the sofa</span>
+├── 02.jpg  <span class="c"># turn toward the window</span>
+└── 03.jpg  <span class="c"># turn toward the entrance</span></pre></div>
 </div>
 </div></section>
 <section id="guia"><div class="wrap">
-<span class="chip">Guia de uso · passo a passo</span>
-<h2>Três jeitos de usar: linha de comando, interface web ou skill</h2>
-<p class="sub">Todos usam o mesmo motor. A saída vai para <code>~/projetos/output/fotos3d/&lt;nome&gt;/</code> com o PNG, a análise, o prompt e o relatório.</p>
+<span class="chip">User Guide · Step by Step</span>
+<h2>Three ways to use it: command line, web interface, or skill</h2>
+<p class="sub">They all use the same engine. The output goes to <code>~/projetos/output/fotos3d/&lt;nome&gt;/</code> with the PNG, analysis, prompt, and report.</p>
 <div class="step"><div class="b">1</div><div>
-<h3>Gerar a 360° a partir de uma pasta de fotos</h3>
-<p>Aponte a pasta e dê um nome. O modelo padrão é o Flux 2 Klein (10 créditos Magnific por imagem).</p>
+<h3>Generate a 360° panorama from a folder of photos</h3>
+<p>Choose a folder and give it a name. The default model is Flux 2 Klein (10 Magnific credits per image).</p>
 <pre><span class="k">cd</span> ~/projetos/fotos3d
 <span class="k">python3</span> -m engine.pipeline /caminho/fotos-da-sala --nome sala-302  <span class="c"># ~1 min</span></pre>
 </div></div>
 <div class="step"><div class="b">2</div><div>
-<h3>Ou gerar a partir de um assunto</h3>
-<p>Descreva o cômodo. A IA cria cinco fotos coerentes e segue o mesmo fluxo.</p>
+<h3>Or generate from a subject</h3>
+<p>Describe the room. The AI creates five consistent photos and follows the same workflow.</p>
 <pre><span class="k">python3</span> -m engine.pipeline --assunto <span class="s">"sala moderna, sofá cinza em L, janela grande com vista pro jardim, piso de madeira clara"</span> --nome demo</pre>
 </div></div>
 <div class="step"><div class="b">3</div><div>
-<h3>Escolher modelo e resolução</h3>
-<p>Troque de modelo quando quiser mais referências ou 4K nativo. O relatório registra qual foi usado.</p>
+<h3>Choose a model and resolution</h3>
+<p>Switch models whenever you want more references or native 4K. The report records which one was used.</p>
 <pre><span class="k">python3</span> -m engine.pipeline sala/ --nome sala-302 --modelo gpt-image-2 --size 4K
 <span class="k">python3</span> -m engine.pipeline sala/ --nome sala-302 --modelo or-gemini-pro   <span class="c"># via OpenRouter</span></pre>
 </div></div>
 <div class="step"><div class="b">4</div><div>
-<h3>Usar a interface web</h3>
-<p>Arraste as fotos (ou cole o caminho da pasta), escolha o modelo com o custo ao lado, acompanhe o progresso e gire o resultado no viewer embutido. Galeria com tudo o que já foi gerado.</p>
-<pre><span class="k">uvicorn</span> web.app:app --port 8360   <span class="c"># abre http://127.0.0.1:8360</span></pre>
+<h3>Use the web interface</h3>
+<p>Drag in the photos (or paste the folder path), choose a model with its cost shown beside it, track progress, and rotate the result in the built-in viewer. A gallery shows everything generated so far.</p>
+<pre><span class="k">uvicorn</span> web.app:app --port 8360   <span class="c"># open http://127.0.0.1:8360</span></pre>
 </div></div>
 <div class="step"><div class="b">5</div><div>
-<h3>Revisar no viewer 360</h3>
-<p>Olhe sempre no viewer, não na imagem plana: móvel duplicado, porta repetida, parede impossível, salto de luz ou quebra no ponto de virada. Se algo estiver errado, regenere ou troque de modelo.</p>
-<pre><span class="c"># viewer avulso: abra no navegador e arraste o PNG</span>
+<h3>Review in the 360 viewer</h3>
+<p>Always check in the viewer, not in the flat image: duplicated furniture, repeated doors, impossible walls, lighting jumps, or breaks at the turning point. If something is wrong, regenerate or switch models.</p>
+<pre><span class="c"># standalone viewer: open it in your browser and drag in the PNG</span>
 viewer/index.html
-<span class="c"># relatório com ratio, resolução e score de costura</span>
+<span class="c"># report with aspect ratio, resolution, and stitching score</span>
 ~/projetos/output/fotos3d/sala-302/relatorio.json</pre>
 </div></div>
 <div class="step"><div class="b">6</div><div>
-<h3>Usar como skill no Claude Code</h3>
-<p>Instale uma vez e depois peça em linguagem natural: "usa a skill property-360 nas fotos da pasta X".</p>
+<h3>Use as a skill in Claude Code</h3>
+<p>Install once, then ask in natural language: "use the property-360 skill on the photos in folder X".</p>
 <pre><span class="k">ln</span> -s ~/projetos/fotos3d/skill/property-360 ~/.claude/skills/property-360</pre>
 </div></div>
 <div class="tbl">
 <table>
-<tr><th>Modelo</th><th>Provedor</th><th>2:1 nativo</th><th>Resultado no teste</th><th>Custo</th></tr>
-<tr><td><code>flux-klein</code> (padrão)</td><td>Freepik / Magnific</td><td>sim, 2048×1024 reamostrado</td><td>equiretangular real, muito fiel</td><td>10 créditos</td></tr>
-<tr><td><code>gpt-image-2</code></td><td>Freepik / Magnific</td><td>sim, até 4K, 16 refs</td><td>melhor qualidade: projeção esférica correta, costura boa</td><td>~45 a 90 créditos</td></tr>
-<tr><td><code>or-gemini-pro</code></td><td>OpenRouter</td><td>não (16:9 reamostrado)</td><td>360 plausível, menos fiel aos detalhes</td><td>~US$ 0,13</td></tr>
-<tr><td><code>or-gemini-flash</code></td><td>OpenRouter</td><td>não</td><td>tende a sair grande-angular, não 360</td><td>~US$ 0,04</td></tr>
+<tr><th>Model</th><th>Provider</th><th>native 2:1</th><th>Test result</th><th>Cost</th></tr>
+<tr><td><code>flux-klein</code> (default)</td><td>Freepik / Magnific</td><td>yes, resampled to 2048×1024</td><td>true equirectangular, highly faithful</td><td>10 credits</td></tr>
+<tr><td><code>gpt-image-2</code></td><td>Freepik / Magnific</td><td>yes, up to 4K, 16 refs</td><td>best quality: correct spherical projection, good stitching</td><td>~45 to 90 credits</td></tr>
+<tr><td><code>or-gemini-pro</code></td><td>OpenRouter</td><td>no (resampled from 16:9)</td><td>Plausible 360°, less faithful to details</td><td>~US$ 0,13</td></tr>
+<tr><td><code>or-gemini-flash</code></td><td>OpenRouter</td><td>no</td><td>tends to come out wide-angle, not 360</td><td>~US$ 0,04</td></tr>
 </table>
 </div>
 </div></section>
 <section id="exemplos"><div class="wrap">
-<span class="chip">Exemplos</span>
-<h2>Sala real e sala imaginada</h2>
-<p class="sub">Acima, as fotos de entrada. Abaixo, a panorâmica gerada (parece esticada na tela plana, mas fecha 360° no viewer).</p>
+<span class="chip">Examples</span>
+<h2>Real room and imagined room</h2>
+<p class="sub">Above are the input photos. Below is the generated panorama (it looks stretched on a flat screen, but wraps around 360° in the viewer).</p>
 <div class="ex">
-<figure><img alt="Seis fotos da sala da Robie House" src="assets/ex-robie-fotos.jpg"/><figcaption>Entrada: 6 fotos reais da sala da Robie House (Frank Lloyd Wright). Wikimedia Commons, foto de w_lemay, CC BY-SA 2.0.</figcaption></figure>
-<figure><img alt="Cinco fotos geradas por assunto" src="assets/ex-assunto-fotos.jpg"/><figcaption>Entrada por assunto: "sala moderna, sofá cinza em L, janela ampla, piso de madeira". Cinco fotos coerentes criadas pela IA.</figcaption></figure>
-<figure><img alt="Panorâmica 360 da Robie House" src="assets/ex-robie-360.jpg"/><figcaption>Saída com Flux 2 Klein: lareira, banco vermelho, vitrais e teto reconstruídos como um único espaço, 4096×2048.</figcaption></figure>
-<figure><img alt="Panorâmica 360 da Robie House com GPT Image 2" src="assets/ex-robie-gpt-360.jpg"/><figcaption>Saída com GPT Image 2: projeção esférica correta (teto e chão curvando), costura boa. A opção de qualidade.</figcaption></figure>
-<figure><img alt="Panorâmica 360 da sala por assunto" src="assets/ex-assunto-360.jpg"/><figcaption>Saída do modo assunto com Gemini Flash: coerente com as fotos, mas com campo de visão menor. Por isso o padrão é o Flux Klein.</figcaption></figure>
+<figure><img alt="Six photos of the Robie House room" src="../assets/ex-robie-fotos.jpg"/><figcaption>Input: 6 real photos of the living room at Robie House (Frank Lloyd Wright). Wikimedia Commons, photo by w_lemay, CC BY-SA 2.0.</figcaption></figure>
+<figure><img alt="Five photos generated per subject" src="../assets/ex-assunto-fotos.jpg"/><figcaption>Subject-based input: "modern living room, gray L-shaped sofa, large window, wood floor." Five consistent photos created by AI.</figcaption></figure>
+<figure><img alt="Robie House 360 panorama" src="../assets/ex-robie-360.jpg"/><figcaption>Flux 2 Klein output: fireplace, red bench, stained glass, and ceiling reconstructed as a single space, 4096×2048.</figcaption></figure>
+<figure><img alt="Robie House 360 panorama with GPT Image 2" src="../assets/ex-robie-gpt-360.jpg"/><figcaption>GPT Image 2 output: correct spherical projection (ceiling and floor curve), good seam. The quality option.</figcaption></figure>
+<figure><img alt="360 room panorama from a subject" src="../assets/ex-assunto-360.jpg"/><figcaption>Gemini Flash subject mode output: consistent with the photos, but with a narrower field of view. That's why Flux Klein is the default.</figcaption></figure>
 </div>
 </div></section>
 <section id="roadmap"><div class="wrap">
 <span class="chip">Roadmap</span>
-<h2>De uma sala ao imóvel inteiro</h2>
-<p class="sub">A versão 1.0 resolve uma sala por vez. As próximas fases ligam as salas num tour.</p>
-<div class="phase"><div class="tag">v1.0 ✓</div><div class="d"><strong>Uma sala, por fotos ou por assunto</strong><span>Pipeline completo, checagens, suavização de costura, interface web com viewer e galeria, skill property-360.</span></div></div>
-<div class="phase"><div class="tag">Fase 2</div><div class="d"><strong>Imóvel inteiro</strong><span>Uma pasta por cômodo, geração em lote e tour ligando as panorâmicas com setas de navegação entre sala, cozinha e quartos.</span></div></div>
-<div class="phase"><div class="tag">Fase 3</div><div class="d"><strong>Correção guiada</strong><span>Inpainting da costura e de objetos duplicados direto no viewer, e exportação para vídeo 360 com IA.</span></div></div>
+<h2>From one room to the whole property</h2>
+<p class="sub">Version 1.0 handles one room at a time. Future phases will connect the rooms into a tour.</p>
+<div class="phase"><div class="tag">v1.0 ✓</div><div class="d"><strong>One room, from photos or a subject</strong><span>Complete pipeline, checks, seam smoothing, web interface with viewer and gallery, property-360 skill.</span></div></div>
+<div class="phase"><div class="tag">Phase 2</div><div class="d"><strong>Entire Property</strong><span>One folder per room, batch generation, and a tour linking the panoramas with navigation arrows between the living room, kitchen, and bedrooms.</span></div></div>
+<div class="phase"><div class="tag">Phase 3</div><div class="d"><strong>Guided correction</strong><span>Inpainting seams and duplicate objects directly in the viewer, and exporting to 360 video with AI.</span></div></div>
 </div></section>
 <footer>
 <div class="wrap">
 <div class="pill">Python · FastAPI</div><div class="pill">Flux 2 Klein · Freepik</div><div class="pill">Gemini · OpenRouter</div><div class="pill">Pannellum</div>
-<p style="margin-top:18px">fotos3d · projeto de pesquisa e educação ·
+<p style="margin-top:18px">fotos3d · research and education project ·
       <a href="https://github.com/inematds/fotos3d">inematds/fotos3d</a> ·
       <a href="https://inema.club">INEMA.CLUB</a></p>
 </div>
